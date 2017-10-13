@@ -1,11 +1,6 @@
 ## jstool  常用工具集合
 
-<<<<<<< HEAD
-//dateformat  将 Date 转化为指定格式的String
-
-=======
 <p>dateformat  将 Date 转化为指定格式的String</p>
->>>>>>> 69160a5e71f8ce273ea5dd0709046bc547b6918f
 ```
 date 待转换的时间 （2017-10-12 17:14:18）
 fmt 转换的格式
