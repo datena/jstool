@@ -1,7 +1,8 @@
-
-
-
-
+/** 
+ * 常用JS方法集合
+ * qq:781488109
+ * http://www.zcrkj.com
+*/
 ;!function(){
     "use strict";
   
