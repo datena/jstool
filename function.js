@@ -74,6 +74,38 @@
             }
             return num;
         }
+
+        /* 
+        * 获取身份证信息
+        * certificateNo 身份证号
+        * return res
+        *        res.sex 性别
+        *        res.birthday 出生日期
+        *        res.age 年龄
+        */
+        ,getCardInfo:function (certificateNo){  
+            var pat = /^\d{6}(((19|20)\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}([0-9]|x|X))|(\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}))$/;  
+            if(!pat.test(certificateNo))  
+                    return null;  
+
+            var parseInner = function(certificateNo, idxSexStart, birthYearSpan){  
+                    var res = {};  
+                    var idxSex = 1 - certificateNo.substr(idxSexStart, 1) % 2;  
+                    res.sex = idxSex == '1' ? '女' : '男';  //性别
+
+                    var year = (birthYearSpan == 2 ? '19' : '') +   
+                                certificateNo.substr(6, birthYearSpan);  
+                    var month = certificateNo.substr(6 + birthYearSpan, 2);  
+                    var day = certificateNo.substr(8 + birthYearSpan, 2);  
+                    res.birthday = year + '-' + month + '-' + day;  //出生日期
+                                        
+                    var d = new Date(); //!!!考虑获取服务器的当前时间  
+                    var monthFloor = ((d.getMonth()+1) < parseInt(month,10) || (d.getMonth()+1) == parseInt(month,10) && d.getDate() < parseInt(day,10)) ? 1 : 0;  
+                    res.age = d.getFullYear() - parseInt(year,10) - monthFloor;//年龄  
+                    return res;  
+            };  
+            return parseInner(certificateNo, certificateNo.length == 15 ? 14 : 16, certificateNo.length == 15 ? 2 : 4);  
+        } 
     }  
 
   window.yzl = window.yzl || yzl;

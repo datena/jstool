@@ -1,6 +1,6 @@
 ## jstool  常用工具集合
 
-dateformat  将 Date 转化为指定格式的String
+<b>dateformat</b>  将 Date 转化为指定格式的String
 
 
 ```
