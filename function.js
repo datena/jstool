@@ -44,6 +44,9 @@
          */
         ,strtotime:function(date,num,type){
             var date = new Date(date);
+            if(typeof(date) != 'object' && date.indexOf('-') >= 0){ //兼容ios
+                date = date.replace(/\-/g,'/');
+            }
             if(type == 'y'){//年
                 date.setFullYear(date.getFullYear() + num);
             }else if(type == 'm'){//月
@@ -65,6 +68,12 @@
             var date1= new Date(date1);
             var date2= new Date(date2);
             var num = 0;
+            if(typeof(date1) != 'object' && date1.indexOf('-') >= 0){ //兼容ios
+                date1 = date1.replace(/\-/g,'/');
+            }
+            if(typeof(date2) != 'object' && date2.indexOf('-') >= 0){ //兼容ios
+                date2 = date2.replace(/\-/g,'/');
+            }
             if(type == 'y'){//年
                 num = date1.getFullYear()*1 - date2.getFullYear()*1;
             }else if(type == 'm'){//月
