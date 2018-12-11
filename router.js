@@ -5,12 +5,12 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-
 Vue.use(Router)
+
 let mhRoute = {routes:[]};//路由表
 let importAllpage = {};//暂存vue文件
 // 获取VUE文件列表
-((r)=>{r.keys().forEach(key => importAllpage[r(key).default.name] = r(key))})(require.context('./views/', true, /\.vue$/))
+((r)=>{r.keys().forEach(key => importAllpage[key.match(/.(\S*).vue/)[1]] = r(key))})(require.context('./views/', true, /\.vue$/))
 // 生产路由表
 for (var key in importAllpage) {
   if (importAllpage.hasOwnProperty(key)) {
