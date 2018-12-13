@@ -8,14 +8,7 @@ Vue项目初始化
 
 ## 使用
 ```
-import Vue from 'vue'
-import App from './App.vue'
-import mhTms from './mhTms'
-
-new Vue({
-  router:mhTms.mhVue.router,
-  render: h => h(App),
-}).$mount('#app')
+yarn && yarn run serve
 ```
 
 ## ⚠️目录说明
